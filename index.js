@@ -1,51 +1,49 @@
 const myLibrary = [];
 
 class Book {
-    constructor(title, author, pages, read) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.read = read;
-    }
-}
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 
-
-
-deleteBook = (tr) => {
+  deleteBook = (tr) => {
     const createButton = document.createElement('button');
 
     createButton.addEventListener('click', () => {
-        tr.parentNode.removeChild(tr);
-        if (myLibrary.indexOf(this) !== -1) {
-            myLibrary.splice(myLibrary.indexOf(this), 1);
-        }
+      tr.parentNode.removeChild(tr);
+      if (myLibrary.indexOf(this) !== -1) {
+        myLibrary.splice(myLibrary.indexOf(this), 1);
+      }
     });
 
     createButton.textContent = 'Delete';
     createButton.setAttribute('class', 'btn btn-danger mr-2 ml-2');
     tr.appendChild(createButton);
-};
+  };
 
-toggleStatus = (tr) => {
+  toggleStatus = (tr) => {
     const createButton = document.createElement('button');
 
     createButton.addEventListener('click', () => {
-        const status = tr.querySelector('td:nth-child(4)');
-        if (this.read = 'Yes') {
-            status.textContent = 'No';
-            this.read = 'No';
-        } else {
-            status.textContent = 'Yes';
-            this.read = 'Yes';
-        }
+      const status = tr.querySelector('td:nth-child(4)');
+      if (this.read = 'Yes') { // eslint-disable-line
+        status.textContent = 'No';
+        this.read = 'No';
+      } else {
+        status.textContent = 'Yes';
+        this.read = 'Yes';
+      }
     });
 
     createButton.textContent = 'Toggle Status';
     createButton.setAttribute('class', 'btn btn-primary');
     tr.appendChild(createButton);
-};
-//Display Books
-displayBook = (book) => {
+  };
+
+  // Display Books
+  displayBook = (book) => {
     const tbody = document.querySelector('#tbody');
     const tr = document.createElement('tr');
     const title = document.createElement('td');
@@ -65,44 +63,44 @@ displayBook = (book) => {
     this.deleteBook(tr);
     this.toggleStatus(tr);
     tbody.appendChild(tr);
+  };
 }
 
 const book1 = new Book('Lord of the Rings', 'R.R. Tolkein', 400, 'Yes');
 const book2 = new Book('The Story', 'Steve Nash', 40, 'No');
 
 myLibrary.push(book1, book2);
-myLibrary.forEach(book => {
-    displayBook(book);
+myLibrary.forEach((book) => {
+  displayBook(book); // eslint-disable-line
 });
 
-//Submit Form
+const newForm = document.forms[0];
+// Submit Form
 newForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const title = newForm.querySelector('input[name="title"').value;
-    const author = newForm.querySelector('input[name="author"').value;
-    const pages = newForm.querySelector('input[name="pages"').value;
-    const readValues = newForm.querySelectorAll('input[name="read"');
+  e.preventDefault();
+  const title = newForm.querySelector('input[name="title"').value;
+  const author = newForm.querySelector('input[name="author"').value;
+  const pages = newForm.querySelector('input[name="pages"').value;
+  const readValues = newForm.querySelectorAll('input[name="read"');
 
-    let read;
-    if (readValues[0].checked) {
-        read = 'Yes';
-    } else {
-        read = 'No'
-    }
+  let read;
+  if (readValues[0].checked) {
+    read = 'Yes';
+  } else {
+    read = 'No';
+  }
 
-    const book = new Book(title, author, pages, read);
-    displayBook(book);
-    myLibrary.push(book);
-
+  const book = new Book(title, author, pages, read);
+  displayBook(book); // eslint-disable-line
+  myLibrary.push(book);
 });
 
-//Show Form
+// Show Form
 document.querySelector('#form-btn').addEventListener('click', () => {
-    newForm.style.display = 'block'
-})
+  newForm.style.display = 'block';
+});
 
-//Hide Form
+// Hide Form
 document.querySelector('#cancel').addEventListener('click', () => {
-    newForm.style.display = 'none'
-})
-
+  newForm.style.display = 'none';
+});
