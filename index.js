@@ -9,6 +9,7 @@ class Book {
     }
 }
 
+//Display Books
 displayBook = (book) => {
     const tbody = document.querySelector('#tbody');
     const tr = document.createElement('tr');
@@ -37,6 +38,7 @@ myLibrary.forEach(book => {
     displayBook(book);
 });
 
+//Submit Form
 newForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const title = newForm.querySelector('input[name="title"').value;
@@ -57,12 +59,12 @@ newForm.addEventListener('submit', (e) => {
 
 });
 
-
-document.querySelector('#form-btn').addEventListener('click',()=>{
-    newForm.style.display='block'
+//Show Form
+document.querySelector('#form-btn').addEventListener('click', () => {
+    newForm.style.display = 'block'
 })
 
-
-document.querySelector('#cancel').addEventListener('click',()=>{
-    newForm.style.display='none'
+//Hide Form
+document.querySelector('#cancel').addEventListener('click', () => {
+    newForm.style.display = 'none'
 })
