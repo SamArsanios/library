@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
+    <title>Library</title>
+</head>
+<body>
+    <h1 class="text-center mt-5">A Library</h1>
+    <table id="table" class="table col-12 mt-5 mb-5">
+        <thead>
+            <th>
+                title
+            </th>
+            <th>
+                author
+            </th>
+            <th>
+                pages
+            </th>
+            <th>
+                read
+            </th>
+        </thead>
+        <tbody id="tbody"></tbody>
+        
+    </table>
+    <div class="text-center">
+        <button class="btn btn-primary" id="form-btn">Add new book</button>
+    </div>
+    <form id="new-form" class="w-50 m-auto p-5">
+        <h2 class="text-center"> new book </h2>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="title" name="title">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="author" name="author">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="pages" name="pages">
+        </div>
+
+        <div class="form-group">
+            <p>have you read this book ?</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="read" id="read1" value="yes"/>
+                <label class="form-check-label" for="read1">Yes</label><br/>
+                <input class="form-check-input" type="radio" name="read" id="read2" value="no" checked/>
+                <label class="form-check-label" for="read1">No</label>
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-warning m-auto "> submit</button>
+        <a id="cancel" href="#">cancel</a>
+
+
+    </form>
+
+      
+      <script src="./index.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"  integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"    crossorigin="anonymous"></script>
+</body>
+</html>
