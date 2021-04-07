@@ -5,7 +5,6 @@
  ## Description
  Small library application to create, delete and change read status of books.
 
- ![Screenshot]
 ![img](https://github.com/SamArsanios/library/blob/library/assets/screenshot.JPG)
 
 ## Built With
