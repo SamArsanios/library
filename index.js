@@ -9,6 +9,21 @@ class Book {
     }
 }
 
+deleteBook = (tr) => {
+    const createButton = document.createElement('button');
+
+    createButton.addEventListener('click', () => {
+        tr.parentNode.removeChild(tr);
+        if (myLibrary.indexOf(this) !== -1) {
+            myLibrary.splice(myLibrary.indexOf(this), 1);
+        }
+    });
+
+    createButton.textContent = 'Delete';
+    createButton.setAttribute('class', 'btn btn-danger');
+    tr.appendChild(createButton);
+};
+
 //Display Books
 displayBook = (book) => {
     const tbody = document.querySelector('#tbody');
@@ -27,6 +42,7 @@ displayBook = (book) => {
     tr.appendChild(author);
     tr.appendChild(pages);
     tr.appendChild(read);
+    this.deleteBook(tr);
     tbody.appendChild(tr);
 }
 
@@ -68,3 +84,4 @@ document.querySelector('#form-btn').addEventListener('click', () => {
 document.querySelector('#cancel').addEventListener('click', () => {
     newForm.style.display = 'none'
 })
+
