@@ -7,71 +7,71 @@ class Book {
     this.pages = pages;
     this.read = read;
   }
-
-  deleteBook = (tr) => {
-    const createButton = document.createElement('button');
-
-    createButton.addEventListener('click', () => {
-      tr.parentNode.removeChild(tr);
-      if (myLibrary.indexOf(this) !== -1) {
-        myLibrary.splice(myLibrary.indexOf(this), 1);
-      }
-    });
-
-    createButton.textContent = 'Delete';
-    createButton.setAttribute('class', 'btn btn-danger mr-2 ml-2');
-    tr.appendChild(createButton);
-  };
-
-  toggleStatus = (tr) => {
-    const createButton = document.createElement('button');
-
-    createButton.addEventListener('click', () => {
-      const status = tr.querySelector('td:nth-child(4)');
-      if (this.read = 'Yes') { // eslint-disable-line
-        status.textContent = 'No';
-        this.read = 'No';
-      } else {
-        status.textContent = 'Yes';
-        this.read = 'Yes';
-      }
-    });
-
-    createButton.textContent = 'Toggle Status';
-    createButton.setAttribute('class', 'btn btn-primary');
-    tr.appendChild(createButton);
-  };
-
-  // Display Books
-  displayBook = (book) => {
-    const tbody = document.querySelector('#tbody');
-    const tr = document.createElement('tr');
-    const title = document.createElement('td');
-    const author = document.createElement('td');
-    const pages = document.createElement('td');
-    const read = document.createElement('td');
-
-    title.textContent = book.title;
-    author.textContent = book.author;
-    pages.textContent = book.pages;
-    read.textContent = book.read;
-
-    tr.appendChild(title);
-    tr.appendChild(author);
-    tr.appendChild(pages);
-    tr.appendChild(read);
-    this.deleteBook(tr);
-    this.toggleStatus(tr);
-    tbody.appendChild(tr);
-  };
 }
+const toggleStatus = (tr) => {
+  const createButton = document.createElement('button');
+
+  createButton.addEventListener('click', () => {
+    const status = tr.querySelector('td:nth-child(4)');
+    if (this.read === 'Yes') {
+      status.textContent = 'No';
+      this.read = 'No';
+    } else {
+      status.textContent = 'Yes';
+      this.read = 'Yes';
+    }
+  });
+
+  createButton.textContent = 'Toggle Status';
+  createButton.setAttribute('class', 'btn btn-primary');
+  tr.appendChild(createButton);
+};
+
+const deleteBook = (tr) => {
+  const createButton = document.createElement('button');
+
+  createButton.addEventListener('click', () => {
+    tr.parentNode.removeChild(tr);
+    if (myLibrary.indexOf(this) !== -1) {
+      myLibrary.splice(myLibrary.indexOf(this), 1);
+    }
+  });
+
+  createButton.textContent = 'Delete';
+  createButton.setAttribute('class', 'btn btn-danger mr-2 ml-2');
+  tr.appendChild(createButton);
+};
+
+// Display Books
+const displayBook = (book) => {
+  const tbody = document.querySelector('#tbody');
+  const tr = document.createElement('tr');
+  const title = document.createElement('td');
+  const author = document.createElement('td');
+  const pages = document.createElement('td');
+  const read = document.createElement('td');
+
+  title.textContent = book.title;
+  author.textContent = book.author;
+  pages.textContent = book.pages;
+  read.textContent = book.read;
+
+  tr.appendChild(title);
+  tr.appendChild(author);
+  tr.appendChild(pages);
+  tr.appendChild(read);
+  deleteBook(tr);
+  toggleStatus(tr);
+  tbody.appendChild(tr);
+};
+// }
 
 const book1 = new Book('Lord of the Rings', 'R.R. Tolkein', 400, 'Yes');
 const book2 = new Book('The Story', 'Steve Nash', 40, 'No');
 
 myLibrary.push(book1, book2);
 myLibrary.forEach((book) => {
-  displayBook(book); // eslint-disable-line
+  displayBook(book);
 });
 
 const newForm = document.forms[0];
@@ -91,7 +91,7 @@ newForm.addEventListener('submit', (e) => {
   }
 
   const book = new Book(title, author, pages, read);
-  displayBook(book); // eslint-disable-line
+  displayBook(book);
   myLibrary.push(book);
 });
 
