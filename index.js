@@ -36,3 +36,23 @@ myLibrary.push(book1, book2);
 myLibrary.forEach(book => {
     displayBook(book);
 });
+
+newForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const title = newForm.querySelector('input[name="title"').value;
+    const author = newForm.querySelector('input[name="author"').value;
+    const pages = newForm.querySelector('input[name="pages"').value;
+    const readValues = newForm.querySelectorAll('input[name="read"');
+
+    let read;
+    if (readValues[0].checked) {
+        read = 'Yes';
+    } else {
+        read = 'No'
+    }
+
+    const book = new Book(title, author, pages, read);
+    displayBook(book);
+    myLibrary.push(book);
+
+});
