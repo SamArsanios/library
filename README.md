@@ -17,7 +17,7 @@
 
 ## Set Up 
 
-1. Run git clone git@github.com:samarsanios/library.git to download or you can download using HTTPS by running git clone https://github.com/samarsanios/library.git in the terminal
+1. Run git clone git@github.com:SamArsanios/library.git to download or you can download using HTTPS by running git clone https://github.com/SamArsanios/library.git in the terminal
 2. Open your browser
 3. Open library/index.html
 
