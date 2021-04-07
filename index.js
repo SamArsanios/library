@@ -56,3 +56,13 @@ newForm.addEventListener('submit', (e) => {
     myLibrary.push(book);
 
 });
+
+
+document.querySelector('#form-btn').addEventListener('click',()=>{
+    newForm.style.display='block'
+})
+
+
+document.querySelector('#cancel').addEventListener('click',()=>{
+    newForm.style.display='none'
+})
