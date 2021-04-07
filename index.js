@@ -9,6 +9,8 @@ class Book {
     }
 }
 
+
+
 deleteBook = (tr) => {
     const createButton = document.createElement('button');
 
@@ -20,10 +22,28 @@ deleteBook = (tr) => {
     });
 
     createButton.textContent = 'Delete';
-    createButton.setAttribute('class', 'btn btn-danger');
+    createButton.setAttribute('class', 'btn btn-danger mr-2 ml-2');
     tr.appendChild(createButton);
 };
 
+toggleStatus = (tr) => {
+    const createButton = document.createElement('button');
+
+    createButton.addEventListener('click', () => {
+        const status = tr.querySelector('td:nth-child(4)');
+        if (this.read = 'Yes') {
+            status.textContent = 'No';
+            this.read = 'No';
+        } else {
+            status.textContent = 'Yes';
+            this.read = 'Yes';
+        }
+    });
+
+    createButton.textContent = 'Toggle Status';
+    createButton.setAttribute('class', 'btn btn-primary');
+    tr.appendChild(createButton);
+};
 //Display Books
 displayBook = (book) => {
     const tbody = document.querySelector('#tbody');
@@ -43,6 +63,7 @@ displayBook = (book) => {
     tr.appendChild(pages);
     tr.appendChild(read);
     this.deleteBook(tr);
+    this.toggleStatus(tr);
     tbody.appendChild(tr);
 }
 
