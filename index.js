@@ -75,7 +75,10 @@ myLibrary.forEach((book) => {
 });
 
 const newForm = document.forms[0];
-// Submit Form
+document.querySelector('#form-btn').addEventListener('click', () => {
+  newForm.classList.toggle('d-none');
+});
+
 newForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const title = newForm.querySelector('input[name="title"').value;
