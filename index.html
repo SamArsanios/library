@@ -10,8 +10,8 @@
     <title>Library</title>
 </head>
 
-<body>
-    <h1 class="text-center mt-5">A Library</h1>
+<body class="container">
+    <h1 class="text-center mt-5">Das-Sam Library</h1>
     <table id="table" class="table col-12 mt-5 mb-5">
         <thead>
             <th>
@@ -31,19 +31,19 @@
 
     </table>
     <div class="text-center">
-        <button class="btn btn-primary" id="form-btn">Add New Book</button>
+        <button class="btn btn-dark" id="form-btn">Add New Book</button>
     </div>
-    <form id="newForm" class="d-none w-50 m-auto p-5">
+    <form id="newForm" class="d-none w-50 m-auto p-5 ">
         <h2 class="text-center"> New Book </h2>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="title" name="title">
+            <input type="text" class="form-control" placeholder="Title" name="title">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="author" name="author">
+            <input type="text" class="form-control" placeholder="Author" name="author">
         </div>
 
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="pages" name="pages">
+            <input type="text" class="form-control" placeholder="Pages" name="pages">
         </div>
 
         <div class="form-group">
@@ -55,7 +55,7 @@
                 <label class="form-check-label" for="read1">No</label>
             </div>
         </div>
-        <button type="submit" class="btn btn-warning m-auto ">Submit</button>
+        <button type="submit" class="btn btn-dark m-auto ">Submit</button>
         <a id="cancel" href="#">Cancel</a>
     </form>
     <script src="index.js"></script>
