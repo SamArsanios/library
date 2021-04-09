@@ -10,14 +10,14 @@ class Book {
 
 const saveLibrary = () => {
   localStorage.lib = JSON.stringify(myLibrary);
-}
+};
 
 const loadLibrary = () => {
   myLibrary = JSON.parse(localStorage.lib);
   for (let i = 0; i < myLibrary.length; i += 1) {
     Object.setPrototypeOf(myLibrary[i], Book.prototype);
   }
-}
+};
 
 const toggleStatus = (tr) => {
   const createButton = document.createElement('button');
