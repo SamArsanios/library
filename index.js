@@ -1,5 +1,4 @@
-const myLibrary = [];
-
+let myLibrary = [];
 class Book {
   constructor(title, author, pages, read) {
     this.title = title;
@@ -8,20 +7,35 @@ class Book {
     this.read = read;
   }
 }
+
+const saveLibrary = () => {
+  localStorage.lib = JSON.stringify(myLibrary);
+};
+
+const loadLibrary = () => {
+  myLibrary = JSON.parse(localStorage.lib);
+  for (let i = 0; i < myLibrary.length; i += 1) {
+    Object.setPrototypeOf(myLibrary[i], Book.prototype);
+  }
+};
+
 const toggleStatus = (tr) => {
   const createButton = document.createElement('button');
-
-  createButton.addEventListener('click', () => {
+  createButton.addEventListener('click', (e) => {
     const status = tr.querySelector('td:nth-child(4)');
+    const title = e.target.parentElement.childNodes[0].innerText;
+    const book = myLibrary.filter((book) => book.title === title)[0];
     if (this.read === 'Yes') {
       status.textContent = 'No';
       this.read = 'No';
+      book.read = 'No';
     } else {
       status.textContent = 'Yes';
       this.read = 'Yes';
+      book.read = 'Yes';
     }
+    saveLibrary();
   });
-
   createButton.textContent = 'Toggle Status';
   createButton.setAttribute('class', 'btn btn-primary');
   tr.appendChild(createButton);
@@ -32,9 +46,20 @@ const deleteBook = (tr) => {
 
   createButton.addEventListener('click', () => {
     tr.parentNode.removeChild(tr);
-    if (myLibrary.indexOf(this) !== -1) {
-      myLibrary.splice(myLibrary.indexOf(this), 1);
+    // console.log(myLibrary.indexOf(this));
+    // console.log(tr);
+    let title = tr.querySelector('td');
+    title = title.textContent;
+    for (let i = 0; i < myLibrary.length; i += 1) {
+      if (myLibrary[i].title === title) {
+        myLibrary.splice(i, 1);
+      }
     }
+    // if (myLibrary.indexOf(this) !== -1) {
+    //   myLibrary.splice(myLibrary.indexOf(this), 1);
+    // }
+
+    saveLibrary();
   });
 
   createButton.textContent = 'Delete';
@@ -66,10 +91,15 @@ const displayBook = (book) => {
 };
 // }
 
-const book1 = new Book('Lord of the Rings', 'R.R. Tolkein', 400, 'Yes');
-const book2 = new Book('The Story', 'Steve Nash', 40, 'No');
+if (!localStorage.lib) {
+  const book1 = new Book('Lord of the Rings', 'R.R. Tolkein', 400, 'Yes');
+  const book2 = new Book('The Story', 'Steve Nash', 40, 'No');
 
-myLibrary.push(book1, book2);
+  myLibrary.push(book1, book2);
+} else {
+  loadLibrary();
+}
+
 myLibrary.forEach((book) => {
   displayBook(book);
 });
@@ -96,6 +126,7 @@ newForm.addEventListener('submit', (e) => {
   const book = new Book(title, author, pages, read);
   displayBook(book);
   myLibrary.push(book);
+  saveLibrary();
 });
 
 // Show Form
