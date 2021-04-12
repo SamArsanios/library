@@ -19,40 +19,12 @@ const loadLibrary = () => {
   }
 };
 
-// const toggleStatus = (tr) => {
-//   const createButton = document.createElement('button');
-
-//   createButton.addEventListener('click', () => {
-//     const status = tr.querySelector('td:nth-child(4)');
-//     if (this.read === 'Yes') {
-//       status.textContent = 'No';
-//       this.read = 'No';
-//     } else {
-//       status.textContent = 'Yes';
-//       this.read = 'Yes';
-//     }
-
-//     // let readStatus = tr.querySelector('td:nth-child(4)');
-//     // readStatus = readStatus.textContent;
-//     // for (let i = 0; i < myLibrary.length; i += 1) {
-//     //   if (myLibrary[i].readStatus === readStatus) {
-//     //     myLibrary.splice(0, 1, readStatus);
-//     //   }
-//     // }
-//     saveLibrary();
-//   });
-
-//   createButton.textContent = 'Toggle Status';
-//   createButton.setAttribute('class', 'btn btn-primary');
-//   tr.appendChild(createButton);
-// };
-
 const toggleStatus = (tr) => {
   const createButton = document.createElement('button');
   createButton.addEventListener('click', (e) => {
     const status = tr.querySelector('td:nth-child(4)');
     const title = e.target.parentElement.childNodes[0].innerText;
-    const book = myLibrary.filter(book => book.title === title)[0];
+    const book = myLibrary.filter((book) => book.title === title)[0];
     if (this.read === 'Yes') {
       status.textContent = 'No';
       this.read = 'No';
@@ -166,6 +138,3 @@ document.querySelector('#form-btn').addEventListener('click', () => {
 document.querySelector('#cancel').addEventListener('click', () => {
   newForm.style.display = 'none';
 });
-
-
-
