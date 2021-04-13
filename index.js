@@ -18,7 +18,12 @@ const loadLibrary = () => {
     Object.setPrototypeOf(myLibrary[i], Book.prototype);
   }
 };
-
+// the first thing is to get the book title.
+// e.target is the button
+// parentElement is the tr element
+// childNodes[0] is the first child so, it is the first td element that has the book title
+// after getting that, I filter the array library to get the book, book.title === title
+// inside the conditionals, I added book.read so, when you click it toggles book.read
 const toggleStatus = (tr) => {
   const createButton = document.createElement('button');
   createButton.addEventListener('click', (e) => {
